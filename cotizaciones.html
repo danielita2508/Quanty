@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Quanty – Cotizaciones</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <style>
+    .calc-box{
+      background:rgba(112,48,239,.07);
+      border:1px solid rgba(112,48,239,.22);
+      border-radius:var(--r-card);
+      padding:1.2rem 1.4rem;
+      margin-top:1.4rem;
+    }
+    .calc-box__title{
+      font-size:.74rem;font-weight:700;
+      text-transform:uppercase;letter-spacing:.65px;
+      color:#b580ff;margin-bottom:.85rem;
+    }
+    .calc-row{
+      display:flex;justify-content:space-between;
+      align-items:center;font-size:.88rem;
+      color:var(--muted);padding:4px 0;
+    }
+    .calc-val{ font-weight:600;color:var(--text); }
+    .calc-total{
+      border-top:1px solid rgba(255,255,255,.1);
+      margin-top:8px;padding-top:10px;
+      font-size:.95rem;font-weight:700;
+    }
+    .calc-total .calc-val{
+      font-size:1.1rem;
+      background:var(--grad);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="topbar__left"><span>Medellin, Colombia</span><span>soporte@quanty.co</span></div>
+    <div class="topbar__right"><span style="color:var(--muted);">Version 1.0 — 2026</span></div>
+  </div>
+
+  <header class="q-header">
+    <div class="q-header__inner">
+      <a href="index.html" class="brand"><div class="brand__icon">Q</div><span class="brand__name">Quan<span>ty</span></span></a>
+      <nav class="q-nav">
+        <a href="index.html"        class="q-nav__link">Inicio</a>
+        <a href="clientes.html"     class="q-nav__link">Clientes</a>
+        <a href="inventario.html"   class="q-nav__link">Inventario</a>
+        <a href="cotizaciones.html" class="q-nav__link active">Cotizaciones</a>
+        <a href="agenda.html"       class="q-nav__link">Agenda</a>
+        <a href="balance.html"      class="q-nav__link">Balance</a>
+      </nav>
+      <a href="formulario.html" class="btn-nav-cta">+ Nuevo registro</a>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="index.html">Inicio</a><a href="clientes.html">Clientes</a>
+      <a href="inventario.html">Inventario</a>
+      <a href="cotizaciones.html" class="active">Cotizaciones</a>
+      <a href="agenda.html">Agenda</a><a href="balance.html">Balance</a>
+      <a href="formulario.html">Nuevo registro</a>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="page-hero__blob page-hero__blob--l"></div>
+    <div class="page-hero__blob page-hero__blob--r"></div>
+    <div class="page-hero__inner">
+      <span class="page-hero__tag">Modulo de Cotizaciones</span>
+      <h1 class="page-hero__title">Generador de Cotizaciones</h1>
+      <p class="page-hero__sub">
+        Cree presupuestos profesionales de forma automatica. El sistema calcula el costo total
+        segun los insumos seleccionados y el porcentaje de mano de obra que usted defina.
+      </p>
+    </div>
+  </section>
+
+  <main class="page-main">
+
+    <div class="section-info">
+      <div class="section-info__title">Como funciona este modulo</div>
+      <div class="section-info__text">
+        Seleccione un cliente, elija los insumos del inventario y defina el porcentaje de mano de obra.
+        El sistema calculara automaticamente el subtotal, el valor de la mano de obra y el total final.
+        Puede exportar la cotizacion como PDF para enviarla directamente al cliente. El historial de cotizaciones
+        le permite ver cuales han sido aceptadas, cuales estan en espera y cuales fueron rechazadas.
+        No se incluyen datos personales sensibles en las tablas publicas de resumen.
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-grid" style="margin-bottom:1.75rem;">
+      <div class="stat-card">
+        <span class="stat-card__label">Total cotizaciones</span>
+        <span class="stat-card__value grad-text">—</span>
+        <span class="stat-card__sub">Aun sin registros</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-card__label">Aceptadas</span>
+        <span class="stat-card__value" style="color:#00e087;">—</span>
+        <span class="stat-card__sub">Trabajos confirmados</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-card__label">En espera</span>
+        <span class="stat-card__value" style="color:#f0aa00;">—</span>
+        <span class="stat-card__sub">Pendientes de respuesta</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-card__label">Rechazadas</span>
+        <span class="stat-card__value" style="color:#f85149;">—</span>
+        <span class="stat-card__sub">No aceptadas por el cliente</span>
+      </div>
+    </div>
+
+    <!-- Tabla -->
+    <p class="sec-title">Historial de cotizaciones</p>
+    <div class="q-table-wrap" style="margin-bottom:2.5rem;">
+      <table class="q-table">
+        <thead>
+          <tr>
+            <th>Numero</th>
+            <th>Tipo de servicio</th>
+            <th>Fecha emision</th>
+            <th>Fecha vencimiento</th>
+            <th>Total estimado</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="empty-row">
+            <td colspan="7">No hay cotizaciones registradas. Use el formulario de abajo para crear la primera.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Zona de subida del logo/imagen para el PDF -->
+    <p class="sec-title">Logo o imagen para la cotizacion en PDF</p>
+
+    <div class="section-info" style="margin-bottom:1.25rem;">
+      <div class="section-info__title">Para que sirve esta imagen</div>
+      <div class="section-info__text">
+        Suba el logo de su empresa o negocio. Esta imagen se incluira en el encabezado del documento PDF
+        que se genera al exportar una cotizacion, dando una apariencia mas profesional.
+        Formato recomendado: PNG con fondo transparente. Tamano maximo: 2 MB.
+      </div>
+    </div>
+
+    <div class="upload-zone" id="cotUpload" style="margin-bottom:1rem;">
+      <input type="file" accept="image/*" id="cotFileInput"/>
+      <div class="upload-zone__icon">
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      </div>
+      <div class="upload-zone__title">Subir logo del negocio</div>
+      <div class="upload-zone__sub">PNG o JPG recomendado — maximo 2 MB<br/>Aparecera en el encabezado del PDF generado</div>
+      <span class="upload-zone__btn">Seleccionar imagen</span>
+    </div>
+    <div class="thumb-grid" id="cotThumbs" style="margin-bottom:2.5rem;"></div>
+
+    <!-- Formulario -->
+    <p class="sec-title">Crear nueva cotizacion</p>
+    <form id="formCot" novalidate>
+
+      <div class="form-section">
+        <div class="form-section-heading">
+          <div class="fs-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b580ff" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <h3>Informacion general</h3>
+          <span class="f-count">5 campos</span>
+        </div>
+        <div class="form-grid">
+          <div>
+            <label class="form-label">Numero de cotizacion</label>
+            <input type="text" class="form-control" value="COT-2026-001" readonly/>
+          </div>
+          <div>
+            <label class="form-label">Cliente asociado</label>
+            <select class="form-select">
+              <option value="" disabled selected>Seleccionar cliente registrado...</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label">Fecha de emision</label>
+            <input type="date" class="form-control"/>
+          </div>
+          <div>
+            <label class="form-label">Fecha de vencimiento</label>
+            <input type="date" class="form-control"/>
+          </div>
+          <div>
+            <label class="form-label">Estado de la cotizacion</label>
+            <select class="form-select">
+              <option value="" disabled selected>Seleccionar...</option>
+              <option>Borrador</option><option>Enviada</option>
+              <option>Aceptada</option><option>Rechazada</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-heading">
+          <div class="fs-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b580ff" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+          </div>
+          <h3>Insumos y calculo</h3>
+          <span class="f-count">3 campos</span>
+        </div>
+        <div class="form-grid">
+          <div>
+            <label class="form-label">Insumo del inventario</label>
+            <select class="form-select">
+              <option value="" disabled selected>Seleccionar insumo registrado...</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label">Cantidad a usar</label>
+            <input type="number" class="form-control" id="cotQty" placeholder="0" min="0" value="0"/>
+          </div>
+          <div>
+            <label class="form-label">Porcentaje de mano de obra (%)</label>
+            <div class="input-wrap">
+              <span class="i-icon">%</span>
+              <input type="number" class="form-control" id="laborPct" placeholder="30" min="0" max="100" value="30"/>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resumen automatico -->
+        <div class="calc-box">
+          <div class="calc-box__title">Resumen del presupuesto (calculado automaticamente)</div>
+          <div class="calc-row">
+            <span>Subtotal de insumos</span>
+            <span class="calc-val" id="cSub">$ 0</span>
+          </div>
+          <div class="calc-row">
+            <span>Mano de obra (<span id="lbl">30</span>% sobre insumos)</span>
+            <span class="calc-val" id="cLab">$ 0</span>
+          </div>
+          <div class="calc-row calc-total">
+            <span>Total de la cotizacion</span>
+            <span class="calc-val" id="cTot">$ 0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-heading">
+          <div class="fs-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b580ff" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          </div>
+          <h3>Condiciones y exportacion</h3>
+          <span class="f-count">2 campos</span>
+        </div>
+        <div class="form-grid">
+          <div class="span-2">
+            <label class="form-label">Condiciones y notas para el cliente</label>
+            <textarea class="form-control" placeholder="Incluya condiciones de pago, tiempos de entrega, garantias, materiales incluidos o excluidos..."></textarea>
+          </div>
+          <div>
+            <label class="form-label">Exportar como PDF al guardar</label>
+            <div class="toggle-row">
+              <span>Generar documento PDF automaticamente</span>
+              <label class="toggle-sw"><input type="checkbox"/><span class="sl"></span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="submit-row">
+        <button type="button" class="btn-secondary" onclick="document.getElementById('formCot').reset();recalc();">Limpiar formulario</button>
+        <button type="submit" class="btn-primary">Guardar cotizacion</button>
+      </div>
+    </form>
+
+  </main>
+
+  <footer class="q-footer">
+    <div class="q-footer__inner">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="brand__icon" style="width:28px;height:28px;font-size:.8rem;border-radius:8px;">Q</div>
+        <span style="font-size:.95rem;font-weight:700;">Quan<span class="grad-text">ty</span></span>
+      </div>
+      <p class="q-footer__copy">© 2026 Quanty · Gestion para trabajadores independientes y microempresas</p>
+      <div class="q-footer__links"><a href="#">Privacidad</a><a href="#">Terminos</a></div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast">Cotizacion guardada correctamente</div>
+
+  <script>
+    document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileNav').classList.toggle('open'));
+
+    const UNIT=45000;
+    function recalc(){
+      const q=parseFloat(document.getElementById('cotQty').value)||0;
+      const p=parseFloat(document.getElementById('laborPct').value)||0;
+      const sub=q*UNIT, lab=sub*(p/100), tot=sub+lab;
+      const fmt=v=>'$ '+v.toLocaleString('es-CO',{minimumFractionDigits:0});
+      document.getElementById('cSub').textContent=fmt(sub);
+      document.getElementById('cLab').textContent=fmt(lab);
+      document.getElementById('cTot').textContent=fmt(tot);
+      document.getElementById('lbl').textContent=p;
+    }
+    document.getElementById('cotQty').addEventListener('input',recalc);
+    document.getElementById('laborPct').addEventListener('input',recalc);
+
+    document.getElementById('formCot').addEventListener('submit',function(e){
+      e.preventDefault();const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);
+    });
+
+    // Upload logo
+    const cotInput=document.getElementById('cotFileInput');
+    const cotThumbs=document.getElementById('cotThumbs');
+    cotInput.addEventListener('change',function(){
+      [...this.files].forEach(file=>{
+        const reader=new FileReader();
+        reader.onload=e=>{
+          const div=document.createElement('div');
+          div.className='thumb-item';
+          div.innerHTML=`<img src="${e.target.result}" alt="logo"/><span class="thumb-del" onclick="this.parentElement.remove()">X</span>`;
+          cotThumbs.appendChild(div);
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+    const zone=document.getElementById('cotUpload');
+    zone.addEventListener('dragover',e=>{e.preventDefault();zone.classList.add('drag-over');});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('drag-over'));
+    zone.addEventListener('drop',e=>{e.preventDefault();zone.classList.remove('drag-over');});
+  </script>
+</body>
+</html>

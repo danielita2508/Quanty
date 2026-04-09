@@ -1,0 +1,204 @@
+<!-- Hecho por: Daniela Montoya, Valentina Pérez e Isabella Aristizabals -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Quanty – Inicio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar__left">
+      <span>Medellin, Colombia</span>
+      <span>soporte@quanty.co</span>
+    </div>
+    <div class="topbar__right">
+      <span style="color:var(--muted);">Version 1.0 — 2026</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="q-header">
+    <div class="q-header__inner">
+      <a href="index.html" class="brand">
+        <div class="brand__icon">Q</div>
+        <span class="brand__name">Quan<span>ty</span></span>
+      </a>
+      <nav class="q-nav">
+        <a href="index.html"        class="q-nav__link active">Inicio</a>
+        <a href="clientes.html"     class="q-nav__link">Clientes</a>
+        <a href="inventario.html"   class="q-nav__link">Inventario</a>
+        <a href="cotizaciones.html" class="q-nav__link">Cotizaciones</a>
+        <a href="agenda.html"       class="q-nav__link">Agenda</a>
+        <a href="balance.html"      class="q-nav__link">Balance</a>
+      </nav>
+      <a href="formulario.html" class="btn-nav-cta">+ Nuevo registro</a>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="index.html" class="active">Inicio</a>
+      <a href="clientes.html">Clientes</a>
+      <a href="inventario.html">Inventario</a>
+      <a href="cotizaciones.html">Cotizaciones</a>
+      <a href="agenda.html">Agenda</a>
+      <a href="balance.html">Balance</a>
+      <a href="formulario.html">Nuevo registro</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="page-hero" style="padding:5.5rem 2rem 4.5rem;">
+    <div class="page-hero__blob page-hero__blob--l"></div>
+    <div class="page-hero__blob page-hero__blob--r"></div>
+    <div class="page-hero__inner" style="text-align:center;">
+      <span class="page-hero__tag">Gestion para su negocio</span>
+      <h1 class="page-hero__title" style="max-width:700px;margin:0 auto .9rem;">
+        Bienvenido a <span class="grad-text">Quanty</span>
+      </h1>
+      <p class="page-hero__sub" style="max-width:600px;margin:0 auto 2rem;">
+        Organice su inventario, clientes, cotizaciones, agenda y balance desde un solo lugar.
+        Disenado para trabajadores independientes y microempresas de servicios.
+      </p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="formulario.html" class="btn-primary">Nuevo registro</a>
+        <a href="clientes.html"   class="btn-secondary">Ver clientes</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main class="page-main">
+
+    <!-- Explicacion -->
+    <div class="section-info" style="margin-bottom:2rem;">
+      <div class="section-info__title">Como funciona el panel de inicio</div>
+      <div class="section-info__text">
+        Este panel muestra un resumen general de su negocio: cantidad de clientes registrados, trabajos activos,
+        insumos en bodega, cotizaciones del mes y ganancias estimadas. Desde aqui puede acceder directamente
+        a cualquier modulo usando el menu superior o las tarjetas de acceso rapido que aparecen mas abajo.
+        Los contadores se actualizan automaticamente cada vez que registra informacion nueva en el sistema.
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-card__label">Clientes registrados</span>
+        <span class="stat-card__value grad-text">—</span>
+        <span class="stat-card__sub">Registre su primer cliente</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-card__label">Trabajos activos</span>
+        <span class="stat-card__value grad-text">—</span>
+        <span class="stat-card__sub">Sin trabajos programados</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-card__label">Insumos en bodega</span>
+        <span class="stat-card__value grad-text">—</span>
+        <span class="stat-card__sub">Agregue productos al inventario</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-card__label">Cotizaciones del mes</span>
+        <span class="stat-card__value grad-text">—</span>
+        <span class="stat-card__sub">Sin cotizaciones este mes</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-card__label">Balance mensual</span>
+        <span class="stat-card__value grad-text">—</span>
+        <span class="stat-card__sub">Registre gastos e ingresos</span>
+      </div>
+    </div>
+
+    <!-- Acceso rapido -->
+    <p class="sec-title">Modulos disponibles</p>
+    <div class="cards-grid" style="margin-bottom:2.5rem;">
+      <a href="clientes.html" class="card" style="text-decoration:none;color:inherit;">
+        <div class="card__title">Clientes</div>
+        <div class="card__desc">Registre y consulte la informacion de sus clientes: datos de contacto, tipo de documento e historial de trabajos realizados.</div>
+      </a>
+      <a href="inventario.html" class="card" style="text-decoration:none;color:inherit;">
+        <div class="card__title">Inventario</div>
+        <div class="card__desc">Controle sus insumos y materiales. Defina precios, cantidades disponibles y reciba alertas cuando el stock sea bajo.</div>
+      </a>
+      <a href="cotizaciones.html" class="card" style="text-decoration:none;color:inherit;">
+        <div class="card__title">Cotizaciones</div>
+        <div class="card__desc">Genere presupuestos con calculo automatico de insumos, porcentaje de mano de obra y exportacion en formato PDF.</div>
+      </a>
+      <a href="agenda.html" class="card" style="text-decoration:none;color:inherit;">
+        <div class="card__title">Agenda</div>
+        <div class="card__desc">Programe sus trabajos con fecha, hora y cliente asignado. Consulte facilmente los pendientes de la semana.</div>
+      </a>
+      <a href="balance.html" class="card" style="text-decoration:none;color:inherit;">
+        <div class="card__title">Balance</div>
+        <div class="card__desc">Registre sus gastos e ingresos clasificados por tipo. Consulte sus ganancias netas por mes y por ano.</div>
+      </a>
+      <a href="formulario.html" class="card" style="text-decoration:none;color:inherit;border-color:rgba(112,48,239,.35);">
+        <div class="card__title">Nuevo registro</div>
+        <div class="card__desc">Formulario unificado para ingresar clientes, insumos y trabajos de una sola vez sin navegar entre pantallas.</div>
+      </a>
+    </div>
+
+    <!-- Tabla trabajos recientes -->
+    <p class="sec-title">Trabajos recientes</p>
+    <div class="section-info" style="margin-bottom:1rem;">
+      <div class="section-info__title">Como leer esta tabla</div>
+      <div class="section-info__text">
+        Aqui apareceran los trabajos que usted registre en el modulo de Agenda, ordenados del mas reciente al
+        mas antiguo. Podra ver el nombre del servicio, el tipo de trabajo, la fecha de entrega pactada,
+        el estado actual (Pendiente, En proceso o Completado) y el valor estimado de la cotizacion asociada.
+        Haga clic en "Ver" para ver el detalle completo de cualquier trabajo.
+      </div>
+    </div>
+    <div class="q-table-wrap">
+      <table class="q-table">
+        <thead>
+          <tr>
+            <th>Nombre del trabajo</th>
+            <th>Tipo de servicio</th>
+            <th>Fecha de entrega</th>
+            <th>Estado</th>
+            <th>Valor estimado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="empty-row">
+            <td colspan="5">
+              Aun no hay trabajos registrados. <a href="agenda.html" style="color:#b580ff;">Registre su primer trabajo en Agenda</a>.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="q-footer">
+    <div class="q-footer__inner">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="brand__icon" style="width:28px;height:28px;font-size:.8rem;border-radius:8px;">Q</div>
+        <span style="font-size:.95rem;font-weight:700;">Quan<span class="grad-text">ty</span></span>
+      </div>
+      <p class="q-footer__copy">© 2026 Quanty · Gestion para trabajadores independientes y microempresas</p>
+      <div class="q-footer__links">
+        <a href="#">Privacidad</a>
+        <a href="#">Terminos</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('hamburger').addEventListener('click',()=>{
+      document.getElementById('mobileNav').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
