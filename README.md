@@ -39,4 +39,4 @@ Si deseas clonar este repositorio y ejecutar la landing page en tu máquina loca
 
 1. **Clona el repositorio:**
 ```bash
-   git clone [https://github.com/tu-usuario/quanty-landing-page.git](https://github.com/tu-usuario/quanty-landing-page.git)
+   git clone [https://github.com/tu-usuario/quanty-landing-page.git]
