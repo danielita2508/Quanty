@@ -1,8 +1,10 @@
 # Quanty Landing Page
 
-¡Bienvenidas al repositorio de la landing page oficial de **Quanty** Este proyecto es una vitrina web diseñada para presentar nuestra aplicación de gestión para pequeños negocios y contratistas independientes. 
+Bienvenidas al repositorio de la landing page oficial de **Quanty** Este proyecto es una vitrina web diseñada para presentar nuestra aplicación de gestión para pequeños negocios y contratistas independientes. 
 
 La landing page fue desarrollada desde cero como parte de las actividades prácticas y el aprendizaje colaborativo de nuestro grupo de estudio: **SoftGirls** y en colaboración de nuestra asignatura de Ingeniería de Software 2.
+
+Finalmente está elaborado por: Isabella Aristizabal Díaz, Valentina Alejandra Pérez Cardona y Daniela Montoya Quintero
 
 ---
 
